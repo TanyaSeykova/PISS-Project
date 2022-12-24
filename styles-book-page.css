@@ -1,0 +1,50 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background:
+  linear-gradient(135deg, #100515 21px, #51176a 22px, #51176a 24px, transparent 24px, transparent 67px, #51176a 67px, #51176a 69px, transparent 69px),
+  linear-gradient(225deg, #100515 21px, #51176a 22px, #51176a 24px, transparent 24px, transparent 67px, #51176a 67px, #51176a 69px, transparent 69px)0 64px;
+  background-color:#100515;
+  background-size: 64px 128px;
+}
+
+h1 {
+  color: #922abf;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 400%;
+  margin-top: 5%;
+}
+
+main {
+  background-color: #505050;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+.book-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+img {
+  max-height: 35em;
+}
+
+.comment-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-comment {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.write-comment, .upload-comment-on-page {
+  display: flex;
+  flex-direction: column;
+}
