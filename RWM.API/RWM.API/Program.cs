@@ -1,22 +1,26 @@
 using Microsoft.EntityFrameworkCore;
+using RWM.API;
 using RWM.Data.Data;
+using RWM.Services;
+using RWM.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-var connectionString = $"Data Source=localhost, 1433; Initial Catalog=Testing;User ID=sa;Password=1234!!PasswordD;Trust Server Certificate=true";
 builder.Services.AddDbContext<RWMDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
+    options.UseSqlServer(builder.Configuration["ConnectionString"]));
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IBookJsonReader, BookJsonReader>();
+builder.Services.AddScoped<IInitialisor, Initialisor>();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*")
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+}));
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,5 +30,20 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<RWMDbContext>();
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        context.Database.Migrate();
+    }
+
+    var iniialisor = services.GetRequiredService<IInitialisor>();
+    iniialisor.Initialise();
+}
 
 app.Run();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using RWM.Data.Models;
 
 namespace RWM.Data.Data
@@ -17,15 +18,6 @@ namespace RWM.Data.Data
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer($"Data Source=localhost, 1433; Initial Catalog=Testing;User ID=sa;Password=1234!!PasswordD;Trust Server Certificate=true");
-            }
-        }
     }
-
-    
 
 }

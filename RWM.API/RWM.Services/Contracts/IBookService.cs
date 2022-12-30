@@ -1,4 +1,5 @@
 ﻿using RWM.Data.Models;
+using RWM.Services.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace RWM.Services.Contracts
 {
     public interface IBookService
     {
-        List<Book> GetBooks();
-        Book GetBook(Guid id);
+        Task<List<CommentlessBook>> GetBooks();
+        Task<Book> GetBook(Guid id);
+        void AddBooks(List<Book> books);
     }
 }

@@ -9,9 +9,8 @@ namespace RWM.Services.Contracts
 {
     public interface ICommentService
     {
-        Comment GetComment(Guid id);
-        List<Comment> GetAllComments();
-        Comment AddComment(Comment comment);
+        Task<Comment> GetComment(Guid id);
+        Task<Comment> AddComment(Comment comment);
 
     }
 }

@@ -24,11 +24,9 @@ namespace RWM.Data.Migrations
 
             modelBuilder.Entity("RWM.Data.Models.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -64,8 +62,8 @@ namespace RWM.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("BookId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<long>("Page")
                         .HasColumnType("bigint");
@@ -89,7 +87,9 @@ namespace RWM.Data.Migrations
                 {
                     b.HasOne("RWM.Data.Models.Book", null)
                         .WithMany("Comments")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RWM.Data.Models.Book", b =>
