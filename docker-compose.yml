@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  rwmdatabase:
+    container_name: rwmdb
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+     - 1433:1433
+    environment: 
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=1234!!PasswordD
+  rwmapi:
+    container_name: rwmapi
+    image: ${DOCKER_REGISTRY-}rwmapi
+    build:
+      context: ./RWM.API
+      dockerfile: ./Dockerfile
+    ports:
+      - 7256:80
+    depends_on:
+      - rwmdatabase
+    environment: 
+     - DB_HOST=rwmdatabase
+     - DB_NAME=RWM
+     - DB_SA_PASSWORD=1234!!PasswordD

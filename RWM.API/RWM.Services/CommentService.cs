@@ -38,6 +38,7 @@ namespace RWM.Services
             {
                 throw new ArgumentException($"Cannot put comment on page: {comment.Page}, Book has {book.Pages} pages");
             }
+            comment.Id = new Guid();
             await _context.AddAsync(comment);
             await _context.SaveChangesAsync();
 

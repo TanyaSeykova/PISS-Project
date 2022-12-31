@@ -4,9 +4,25 @@ using RWM.Data.Data;
 using RWM.Services;
 using RWM.Services.Contracts;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+var connectionString = "";
+if (dbHost != null || dbName != null || dbPassword != null)
+{
+    connectionString = $"Data Source={dbHost}; Initial Catalog={dbName};User ID=sa;Password={dbPassword};Trust Server Certificate=true";
+}
+else
+{
+    connectionString = builder.Configuration["ConnectionString"];
+}
 builder.Services.AddDbContext<RWMDbContext>(options =>
-    options.UseSqlServer(builder.Configuration["ConnectionString"]));
+    options.UseSqlServer(connectionString));
+
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IBookJsonReader, BookJsonReader>();
@@ -21,11 +37,9 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
     .AllowAnyHeader();
 }));
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
