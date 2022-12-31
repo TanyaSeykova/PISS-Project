@@ -30,7 +30,7 @@ namespace RWM.API.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<ActionResult<List<CommentlessBook>>> GetBooks()
+        public async Task<ActionResult<List<Book>>> GetBooks()
         {
             return Ok(await _bookService.GetBooks());
         }

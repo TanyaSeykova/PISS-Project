@@ -16,7 +16,7 @@ namespace RWM.Services.Extensions
             {
                 Author = book.Author,
                 Description = book.Description,
-                Pages = uint.Parse(book.Pages),
+                Pages = int.Parse(book.Pages),
                 Series = book.Series,
                 Title = book.Title,
                 CoverImgUrl = book.CoverImg

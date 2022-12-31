@@ -24,7 +24,6 @@ namespace RWM.Services
         public async Task<Book> GetBook(Guid id)
         {
             var book = await _context.Books
-                .Include(c => c.Comments)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if(book == null)
@@ -34,15 +33,9 @@ namespace RWM.Services
             return book;
         }
 
-        public async Task<List<CommentlessBook>> GetBooks()
+        public async Task<List<Book>> GetBooks()
         {
-            var books = await _context.Books.ToListAsync();
-            var commetlessBooks = new List<CommentlessBook>();
-            foreach(var book in books)
-            {
-                commetlessBooks.Add(book.ToBookWithoutComments());
-            }
-            return commetlessBooks;
+            return await _context.Books.ToListAsync();
         }
 
         public void AddBooks(List<Book> books)

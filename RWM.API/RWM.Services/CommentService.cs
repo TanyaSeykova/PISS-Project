@@ -44,5 +44,32 @@ namespace RWM.Services
 
             return comment;
         }
+
+        public async Task<List<Comment>> GetCommentsForBook(Guid bookId)
+        {
+            var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == bookId);
+            if (book == null)
+            {
+                throw new ArgumentException($"Book with id: {bookId} was not found");
+            }
+            var comments = await _context.Comments.Where(c => c.BookId == bookId).ToListAsync();
+            return comments;
+
+        }
+
+        public async Task<List<Comment>> GetCommentsForBookBeforePage(Guid bookId, int page)
+        {
+            var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == bookId);
+            if (book == null)
+            {
+                throw new ArgumentException($"Book with id: {bookId} was not found");
+            }
+            if (page < 1 || page > book.Pages)
+            {
+                throw new ArgumentException($"Page is either more than the book's pages '{book.Pages}' or is less than 1. Page: {page}");
+            }
+            var comments = await _context.Comments.Where(c => c.BookId == bookId && c.Page <= page).ToListAsync();
+            return comments;
+        }
     }
 }

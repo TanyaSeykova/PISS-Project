@@ -12,8 +12,8 @@ using RWM.Data.Data;
 namespace RWM.Data.Migrations
 {
     [DbContext(typeof(RWMDbContext))]
-    [Migration("20221230141629_initMigration")]
-    partial class initMigration
+    [Migration("20221231124156_Init-Migration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,8 @@ namespace RWM.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Pages")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Pages")
+                        .HasColumnType("int");
 
                     b.Property<string>("Series")
                         .IsRequired()
@@ -68,8 +68,8 @@ namespace RWM.Data.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("Page")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Page")
+                        .HasColumnType("int");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -81,23 +81,7 @@ namespace RWM.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
-
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("RWM.Data.Models.Comment", b =>
-                {
-                    b.HasOne("RWM.Data.Models.Book", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RWM.Data.Models.Book", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

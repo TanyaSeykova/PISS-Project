@@ -8,7 +8,7 @@ namespace RWM.Data.Models
         public Guid Id { get; set; }
         public string Username { get; set; }
         public string Text { get; set; }
-        public uint Page { get; set; }
+        public int Page { get; set; }
         public Guid BookId { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace RWM.Services.Contracts
     {
         Task<Comment> GetComment(Guid id);
         Task<Comment> AddComment(Comment comment);
+        Task<List<Comment>> GetCommentsForBook(Guid bookId);
+        Task<List<Comment>> GetCommentsForBookBeforePage(Guid bookId, int page);
 
     }
 }

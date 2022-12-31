@@ -10,10 +10,8 @@ namespace RWM.Data.Models
         public string Series { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
-        public uint Pages { get; set; }
+        public int Pages { get; set; }
         public string CoverImgUrl { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        
        
     }
 }

@@ -40,5 +40,32 @@ namespace RWM.API.Controllers
                 return BadRequest(ae.Message);
             }
         }
+
+        [HttpGet("for-book/{bookId:Guid}")]
+        public async Task<ActionResult<List<Comment>>> GetCommentsForBook(Guid bookId)
+        {
+            try
+            {
+                return Ok(await _commentService.GetCommentsForBook(bookId));
+            }
+            catch (ArgumentException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+        }
+
+        [HttpGet("for-book/{bookId:Guid}/before-page/{page:int}")]
+        public async Task<ActionResult<List<Comment>>> GetCommentsBeforePage(Guid bookId, int page)
+        {
+            try
+            {
+                return Ok(await _commentService.GetCommentsForBookBeforePage(bookId, page));
+            }
+            catch (ArgumentException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+        }
+        
     }
 }

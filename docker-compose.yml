@@ -5,7 +5,7 @@ services:
     container_name: rwmdb
     image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
-     - 1433:1433
+     - 1500:1500
     environment: 
      - ACCEPT_EULA=Y
      - SA_PASSWORD=1234!!PasswordD

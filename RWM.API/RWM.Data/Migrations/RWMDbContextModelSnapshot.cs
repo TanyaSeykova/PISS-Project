@@ -40,8 +40,8 @@ namespace RWM.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Pages")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Pages")
+                        .HasColumnType("int");
 
                     b.Property<string>("Series")
                         .IsRequired()
@@ -65,8 +65,8 @@ namespace RWM.Data.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("Page")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Page")
+                        .HasColumnType("int");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -78,23 +78,7 @@ namespace RWM.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
-
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("RWM.Data.Models.Comment", b =>
-                {
-                    b.HasOne("RWM.Data.Models.Book", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RWM.Data.Models.Book", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

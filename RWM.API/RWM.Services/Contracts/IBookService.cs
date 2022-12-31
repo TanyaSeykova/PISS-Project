@@ -10,7 +10,7 @@ namespace RWM.Services.Contracts
 {
     public interface IBookService
     {
-        Task<List<CommentlessBook>> GetBooks();
+        Task<List<Book>> GetBooks();
         Task<Book> GetBook(Guid id);
         void AddBooks(List<Book> books);
     }

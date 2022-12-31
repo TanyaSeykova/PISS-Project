@@ -30,7 +30,6 @@ namespace RWM.Services
             if(booksCount == 0)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "converted-dataset.json");
-                Console.WriteLine(path);
                 using (var reader = new StreamReader(path))
                 {
                     var booksJson = reader.ReadToEnd();
