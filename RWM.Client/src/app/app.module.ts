@@ -8,6 +8,12 @@ import { BookPageComponent } from './components/book-page/book-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'book', component: BookPageComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +23,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
