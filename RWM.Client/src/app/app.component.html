@@ -1,31 +1,8 @@
 <h1>Read With Me</h1>
   <section class="search-container">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-book"></i></button>
+      <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery">
+      <button (click)="filterBooks()" type="submit"><i class="fa fa-book"></i></button>
   </section>
-  <section class="books-container">
-    <div class="book-display">
-      <img src="./images/fiction2.jpg" alt="name-book">
-      <p class="book-name">Тревожни хора</p>
-      <p class="book-author">Фредрик Бакман</p>
-      <button class="currently-reading">Read</button>
-    </div>
-    <div class="book-display">
-      <img src="../assets/images/fiction2.jpg" alt="name-book">
-      <p class="book-name">Тревожни хора</p>
-      <p class="book-author">Фредрик Бакман</p>
-      <button class="currently-reading">Read</button>
-    </div>
-    <div class="book-display">
-      <img src="./images/fiction2.jpg" alt="name-book">
-      <p class="book-name">Тревожни хора</p>
-      <p class="book-author">Фредрик Бакман</p>
-      <button class="currently-reading">Read</button>
-    </div>
-    <div class="book-display">
-      <img src="./images/fiction2.jpg" alt="name-book">
-      <p class="book-name">Тревожни хора</p>
-      <p class="book-author">Фредрик Бакман</p>
-      <button class="currently-reading">Read</button>
-    </div>
+  <section class="books-container" *ngFor="let book of filteredBooks">
+    <app-book [bookComp]="book"></app-book>
   </section>
