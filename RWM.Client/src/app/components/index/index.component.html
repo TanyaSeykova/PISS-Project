@@ -1,6 +1,6 @@
 <h1>Read With Me</h1>
 <section class="search-container">
-    <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery">
+    <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery" (keydown)="submit($event)">
     <button (click)="filterBooks()" type="submit"><i class="fa fa-book"></i></button>
 </section>
 <section class="books-container" *ngFor="let book of filteredBooks">

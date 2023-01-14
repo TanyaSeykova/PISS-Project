@@ -40,12 +40,18 @@ export class IndexComponent implements OnInit {
     .subscribe(books => {
       this.books = books
     });
-    this.books = [this.dummyOne, this.dummyTwo];
+    //this.books = [this.dummyOne, this.dummyTwo];
   }
 
   public filterBooks(){
-    this.filteredBooks = this.books.filter(b => b.title.includes(this.searchQuery) || b.author.includes(this.searchQuery))
+    this.filteredBooks = this.books.filter(b => b.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || b.author.toLowerCase().includes(this.searchQuery.toLowerCase()))
   }
 
+  submit(event: KeyboardEvent){
+    if(event.key === "Enter"){
+      this.filterBooks();
+    }
+    console.log(event.key);
+  }
 }
 
