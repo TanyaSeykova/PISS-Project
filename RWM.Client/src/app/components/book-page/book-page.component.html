@@ -10,7 +10,7 @@
             </section>
             <section class="page-control">
                 <p>I'm on page <input type="number" name="" id="book-page"> out of <span class="total-pages">324</span></p>
-                <button>Show comments</button>
+                <button (click)="showComments()">Show comments</button>
             </section>
         </section>
     </section>
@@ -18,24 +18,24 @@
         <h2 class="comments-label">Comments</h2>
         <section class="upload-comment">
             <section class="write-comment">
+                <p hidden class="warning" id="username-input-null-warning">Don't forget to enter your username!</p>
+                <p hidden class="warning" id="comment-textarea-null-warning">Comment can't be empty!</p>
                 <input type="text" class="username" placeholder="Username" id="username-input">
                 <textarea id="comment-textarea" placeholder="Comment..."></textarea>
             </section>
             
             <section class="upload-comment-on-page">
-                <input type="text" class="upload-on-page" placeholder="123">
-                <button class="upload-comment">Publish</button>
+                <p hidden class="warning" id="book-page-null-warning">Don't forget to enter a page!</p>
+                <p hidden class="warning" id="book-page-number-warning">Page should be a number between 0 and [book-pages].</p>
+                <input type="number" class="upload-on-page" placeholder="123" id="page-input">
+                <button (click)="publish()" class="upload-comment">Publish</button>
             </section>
             
         </section>
-        <section class="display-comments">
+        <section class="display-comments" id="display-comments" *ngFor="let comment of comments">
             <section class="comment">
-                <p><span class="username-on-comment">Tanya</span> on page <span class="comment-page">123</span></p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus qui omnis deserunt cupiditate possimus repudiandae officiis eos inventore. Accusantium neque in voluptates explicabo fugit, asperiores dolor cum blanditiis pariatur saepe!</p>
-            </section>
-            <section class="comment">
-                <p><span class="username-on-comment">Tanya</span> on page <span class="comment-page">123</span></p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus qui omnis deserunt cupiditate possimus repudiandae officiis eos inventore. Accusantium neque in voluptates explicabo fugit, asperiores dolor cum blanditiis pariatur saepe!</p>
+                <p><span class="username-on-comment">{{comment.username}}</span> on page <span class="comment-page">{{comment.page}}</span></p>
+                <p>{{comment.text}}</p>
             </section>
         </section>
     </section>
