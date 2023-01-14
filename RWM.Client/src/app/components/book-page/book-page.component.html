@@ -1,20 +1,26 @@
-<div>
+<div class="book-page-div">
   <h1>Read With Me</h1>
   <main>
     <section class="book-section" *ngIf="book">
-        <img [src]="book.coverImgUrl" alt="name-book">
+        <section class="page-control">
+            <img [src]="book.coverImgUrl" alt="name-book">
+            <p>I'm on page   <input type="number" name="" id="book-page" placeholder="0"> </p><p>out of <span class="total-pages" >{{book.pages}}</span></p>
+    
+            <button (click)="showComments()">Show comments</button>
+        </section>
+       
         <section class="book-stats">
             <section class="book-info">
                 <p class="book-name">{{book.title}}</p>
-                <p class="book-author">Author: {{book.author}}</p>
-            </section>
-            <section class="page-control">
-                <p>I'm on page <input type="number" name="" id="book-page" placeholder="0"> out of <span class="total-pages" >{{book.pages}}</span></p>
+                <div class="line"></div>
+                <p class="book-author"><span class="author-accent">Author:</span> {{book.author}}</p>
                 <p class="book-description">{{book.description}}</p>
-                <button (click)="showComments()">Show comments</button>
             </section>
+            
         </section>
+       
     </section>
+
     <section class="comment-section">
         <h2 class="comments-label">Comments</h2>
         <section class="upload-comment">

@@ -36,7 +36,6 @@ export class BookPageComponent {
 
   getValue(event: any) {
     const target = event.target as HTMLInputElement;
-    console.log(target.value);
   }
 
   generateId() {
@@ -51,7 +50,6 @@ export class BookPageComponent {
 
 
     username?.addEventListener('username', this.getValue);
-    console.log("usrnm is ", (username || {}).value);
     if (username!.value == '' || username!.value == null) {
       document.getElementById('username-input-null-warning')?.removeAttribute('hidden');
       return;
@@ -62,7 +60,7 @@ export class BookPageComponent {
 
 
     commentText?.addEventListener('commentText', this.getValue);
-    console.log("comment is ", (commentText || {}).value);
+
     if (commentText!.value == '') {
       document.getElementById('comment-textarea-null-warning')?.removeAttribute('hidden');
       return;
@@ -73,7 +71,6 @@ export class BookPageComponent {
 
 
     page?.addEventListener('page', this.getValue);
-    console.log("page is ", (page || {}).value);
     if (page!.value == '') {
       document.getElementById('book-page-null-warning')?.removeAttribute('hidden');
       return;
