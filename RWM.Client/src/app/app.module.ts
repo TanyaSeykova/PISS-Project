@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
   { path: 'book', component: BookPageComponent }
@@ -18,13 +20,15 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     BookComponent,
-    BookPageComponent
+    BookPageComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

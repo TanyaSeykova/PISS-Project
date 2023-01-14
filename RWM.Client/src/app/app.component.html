@@ -1,9 +1,1 @@
 <router-outlet></router-outlet>
-<h1>Read With Me</h1>
-  <section class="search-container">
-      <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery">
-      <button (click)="filterBooks()" type="submit"><i class="fa fa-book"></i></button>
-  </section>
-  <section class="books-container" *ngFor="let book of filteredBooks">
-    <app-book [bookComp]="book"></app-book>
-  </section>

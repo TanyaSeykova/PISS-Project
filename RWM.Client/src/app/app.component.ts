@@ -10,43 +10,7 @@ import { BookService } from './services/book.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
-  books: Book[] = [];
-
-  public searchQuery: string = "";
-  public filteredBooks: Book[] = [];
-  private dummyOne: Book = {
-    id: "12961307-justice",
-    title: "Justice",
-    series: "New Species #4",
-    author: "Laurann Dohner",
-    pages: 222,
-    coverImgUrl: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1319618114l/12961307.jpg",
-    description: "desc"  
-  };
-  private dummyTwo: Book = {
-    id: "12961307-justice",
-    title: "Justice is served",
-    series: "New Species #4",
-    author: "Laurann Dohner",
-    pages: 222,
-    coverImgUrl: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1319618114l/12961307.jpg",
-    description: "desc"  
-  };
-
-  constructor(private bookService: BookService){}
-
-  ngOnInit(): void {
-    this.bookService.getAllBooks()
-    .subscribe(books => {
-      this.books = books
-    });
-    this.books = [this.dummyOne, this.dummyTwo];
-  }
-
-  public filterBooks(){
-    this.filteredBooks = this.books.filter(b => b.title.includes(this.searchQuery) || b.author.includes(this.searchQuery))
-  }
+export class AppComponent {
 
 }
 
