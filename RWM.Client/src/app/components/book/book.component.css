@@ -1,0 +1,46 @@
+:host {
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Metropolis', Arial, sans-serif;
+    height: 680px;
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    margin: 25px 0;
+    background-color: #100515;
+    padding-bottom: 5px;
+    border-radius: 0 0 10px 10px;
+}
+
+img {
+    width: 360px;
+    height: 480px;
+}
+
+p {
+    max-width: 360px;
+    overflow-x: hidden;
+}
+
+.book-author{
+    font-size: 1rem
+}
+
+a {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #51176a;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #b49fcc;
+    color: #100515;
+}

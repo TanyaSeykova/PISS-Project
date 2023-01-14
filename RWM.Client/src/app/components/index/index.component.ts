@@ -14,6 +14,8 @@ export class IndexComponent implements OnInit {
 
   public searchQuery: string = "";
   public filteredBooks: Book[] = [];
+  searchWarning: { [key: string]: string} = {};
+  booksContainer: { [key: string]: string} = {};
 
   constructor(private bookService: BookService){}
 
@@ -23,11 +25,26 @@ export class IndexComponent implements OnInit {
       this.books = books
     });
     //this.books = [this.dummyOne, this.dummyTwo];
+    this.searchWarning['display'] = 'none';
+    this.booksContainer['display'] = 'none';
   }
 
   public filterBooks(){
-    this.filteredBooks = this.books.filter(b => b.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || b.author.toLowerCase().includes(this.searchQuery.toLowerCase()))
+    delete this.booksContainer['display'];
+    if(this.searchQuery.length < 2){
+      delete this.searchWarning['display'];
+      this.filteredBooks = [];
+      return;
+    }
+    this.filteredBooks = this.books.filter(b => b.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || b.author.toLowerCase().includes(this.searchQuery.toLowerCase()));
+    this.searchWarning['display'] = 'none';
   }
 
+  submit(event: KeyboardEvent){
+    if(event.key === "Enter"){
+      this.filterBooks();
+    }
+    console.log(event.key);
+  }
 }
 
