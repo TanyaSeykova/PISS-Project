@@ -1,15 +1,16 @@
 <div>
   <h1>Read With Me</h1>
   <main>
-    <section class="book-section">
-        <img src="../../../assets/images/fiction2.jpg" alt="name-book">
+    <section class="book-section" *ngIf="book">
+        <img [src]="book.coverImgUrl" alt="name-book">
         <section class="book-stats">
             <section class="book-info">
-                <p class="book-name">Тревожни хора</p>
-                <p class="book-author">Фредрик Бакман</p>
+                <p class="book-name">{{book.title}}</p>
+                <p class="book-author">Author: {{book.author}}</p>
             </section>
             <section class="page-control">
-                <p>I'm on page <input type="number" name="" id="book-page"> out of <span class="total-pages">324</span></p>
+                <p>I'm on page <input type="number" name="" id="book-page" placeholder="0"> out of <span class="total-pages" >{{book.pages}}</span></p>
+                <p class="book-description">{{book.description}}</p>
                 <button (click)="showComments()">Show comments</button>
             </section>
         </section>
