@@ -1,8 +1,13 @@
 <h1>Read With Me</h1>
 <section class="search-container">
     <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery" (keydown)="submit($event)">
-    <button (click)="filterBooks()" type="submit"><i class="fa fa-book"></i></button>
+    <a (click)="filterBooks()"><i class="fa fa-book"></i></a>
 </section>
-<section class="books-container" *ngFor="let book of filteredBooks">
-    <app-book [bookComp]="book"></app-book>
+<section class="books-container" [ngStyle] = 'booksContainer'>
+    <div class="search-warning" [ngStyle] = 'searchWarning'>
+        Search items must be at least 2 characters long.
+    </div>
+    <div *ngFor="let book of filteredBooks">
+        <app-book [bookComp]="book"></app-book>
+    </div>
 </section>

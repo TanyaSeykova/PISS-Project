@@ -1,54 +1,61 @@
+:host{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 h1 {
     color: #922abf;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 400%;
-    margin-top: 5%;
-  }
-  
-  .search-container{
+    margin: 25px 0;
+}
+
+.search-container{
     display: flex;
     justify-content: center;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    min-width: 100%;
-    border-radius: 10%;
-  }
-  .search-container > input {
+    margin: 25px 0;
+    width: 30%;
+    border-radius: 10px;
+}
+.search-container > input {
     width: 90%;
     min-height: 30px;
-  }
-  
-  .search-container > button {
+}
+
+.search-container > button {
     min-width: 30px;
-  }
-  p {
+}
+p {
     color: whitesmoke;
-  }
-  .books-container {
+}
+.books-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     background-color: #505050;
-    padding-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
     width: 90%;
-  }
-  
-  .book-display {
+    border-radius: 25px;
+}
+
+.book-display {
     display: flex;
     align-items: center;
     flex-direction: column;
     max-width: 15%;
-  }
-  
-  .book-display > img {
+}
+
+.book-display > img {
     max-width: 90%;
-  }
-  
-  .currently-reading{
+}
+
+.currently-reading{
     background-color: #922abf;
     border-width: 2px;
     border-color: white;
@@ -58,22 +65,46 @@ h1 {
     margin-bottom: 5%;
     height: 3em;
     font-size: larger;
-  }
-  
-  .book-name, .book-author {
+}
+
+.book-name, .book-author {
     font-size: 1.5em;
     font-style: italic;
-  }
-  .book-author {
+}
+.book-author {
     margin-top: 1%;
     margin-bottom: 5%;
-  }
-  @media only screen and (max-width: 800px) {
+}
+@media only screen and (max-width: 800px) {
     .books-container {
-      flex-direction: column;
+        flex-direction: column;
     }
-  
+
     .book-display {
-      max-width: 80%;
+        max-width: 80%;
     }
-  }
+}
+
+.search-warning{
+    color: #fff;
+    font-size: 2rem;
+    display: inline-block;
+    font-family: 'Metropolis', Arial, sans-serif;
+}
+
+a {
+    color: #fff;
+    display: flex;
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: #51176a;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+a:hover {
+    background-color: #b49fcc;
+    color: #100515;
+} 
