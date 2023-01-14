@@ -15,7 +15,7 @@ export class CommentService {
   }
 
   public addComment(newComm: Comment) {
-  console.log(newComm);     
     return this.http.post<Comment>("http://localhost:7256/Comment", newComm ).subscribe();
   }
+
 }

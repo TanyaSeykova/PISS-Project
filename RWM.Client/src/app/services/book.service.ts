@@ -10,6 +10,10 @@ export class BookService {
   constructor(private http:HttpClient) { }
 
   public getAllBooks(){
-    return this.http.get<Book[]>("http://localhost:api-host/Book/all");
+    return this.http.get<Book[]>("http://localhost:7256/Book/all");
+  }
+
+  public getBook(bookId: string){
+    return this.http.get<Book>(`http://localhost:7256/Book/${bookId}`)
   }
 }
