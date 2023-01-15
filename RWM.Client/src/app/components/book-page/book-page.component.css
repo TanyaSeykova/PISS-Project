@@ -69,18 +69,35 @@ input[type=number] {
   font-size: 20px; 
 }
 
-.comment-section{
+input[type=text], textarea {
+  padding:10px;
+  border: none;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-size: 20px; 
+  width:100%;
+}
+
+.comment-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: black;
+  margin: 30px;
+}
+
+.comment-section ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #922abf;
+  opacity: 1; /* Firefox */
 }
 
 .upload-comment {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  min-width: 90%;
+
+}
+
+.upload-comment-button {
+  width: 101%;
+  margin-top: 30px;
 }
 
 .write-comment {
@@ -93,11 +110,11 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   width: 20%;
+  margin: 0 5% 0 5%;
 }
 
 #comment-textarea {
   height: 7em;
-  resize: none;
 }
 
 button {
@@ -120,36 +137,20 @@ button:hover {
   color: #100515;
 } 
 
-.display-comments {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 
 h2 {
-  color: #922abf;
+  color: #cccccc;
   font-size: 2em;
-  -webkit-text-stroke: 1px white;
-}
-.comment {
-  background-color: white;
-  border-color: #922abf;
-  border-width:medium;
-  border-style: solid;
-  border-radius: 10%;
-  padding: 5px;
-  width:90%;
-  margin-top: 2%;
 }
 
-.username-on-comment {
-  font-weight: bold;
-}
+
+
 
 .comment-page {
   font-weight: bold;
 }
+
 @media only screen and (max-width: 800px) {
   .book-section {
     flex-direction: column;
@@ -158,9 +159,6 @@ h2 {
   .book-section > img {
     max-width: max-content;
     margin-bottom: 2%;
-  }
-  .upload-comment {
-    flex-direction: column;
   }
   .write-comment{
     width: 100%;
@@ -173,4 +171,32 @@ h2 {
   .comment {
     align-self: center;
   }
+
 }
+
+
+.display-comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  border-width:medium;
+  border-left: 10px solid #922abf;
+  background-color: #cccccc;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-top: 2%;
+}
+
+.username-on-comment {
+  padding-bottom: 100px;;
+  font-weight: bold;
+}
+
+.comment-text {
+  font-style: italic;
+  text-indent: 1%;
+
+}
+

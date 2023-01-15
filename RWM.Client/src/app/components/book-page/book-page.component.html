@@ -34,15 +34,15 @@
             <section class="upload-comment-on-page">
                 <p hidden class="warning" id="book-page-null-warning">Don't forget to enter a page!</p>
                 <p hidden class="warning" id="book-page-number-warning">Page should be a number between 0 and [book-pages].</p>
-                <input type="number" class="upload-on-page" placeholder="123" id="page-input">
-                <button (click)="publish()" class="upload-comment">Publish</button>
+                <input type="number" class="upload-on-page" placeholder="Page" id="page-input">
+                <button (click)="publish()" class="upload-comment-button">Publish</button>
             </section>
             
         </section>
         <section class="display-comments" id="display-comments" *ngFor="let comment of comments">
             <section class="comment">
                 <p><span class="username-on-comment">{{comment.username}}</span> on page <span class="comment-page">{{comment.page}}</span></p>
-                <p>{{comment.text}}</p>
+                <p class="comment-text">{{comment.text}}</p>
             </section>
         </section>
     </section>
