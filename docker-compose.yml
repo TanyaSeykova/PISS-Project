@@ -23,3 +23,12 @@ services:
      - DB_HOST=rwmdatabase
      - DB_NAME=RWM
      - DB_SA_PASSWORD=1234!!PasswordD
+  rwmclient:
+    container_name: rwmclient
+    image: ${DOCKER_REGISTRY-}rwmweb
+    build: 
+      context: ./RWM.Client
+      dockerfile: ./Dockerfile
+    ports:
+      - 4200:80
+
